@@ -1,0 +1,32 @@
+[package]
+name = "praetor-win32-cage"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Isolated, ANSSI-audited Win32 FFI containment boundary: Kill-On-Close JobObjects, NtSuspendProcess pre-kill freeze, and process-tree eviction"
+
+[lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[lints.clippy]
+unwrap_used = "warn"
+undocumented_unsafe_blocks = "deny"
+
+[dependencies]
+thiserror.workspace = true
+serde.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Diagnostics_ToolHelp",
+    "Win32_System_JobObjects",
+    "Win32_System_RemoteDesktop",
+    "Win32_System_Threading",
+] }
+
+[dev-dependencies]
+tempfile = "3.14"

@@ -1,0 +1,72 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/praetor-core",
+    "crates/praetor-win32-cage",
+    "crates/praetor-hook",
+    "crates/praetor-gate",
+    "crates/praetor-reaper",
+]
+
+[workspace.package]
+version = "0.1.2"
+edition = "2024"
+authors = ["tsiscoe <tsiscoe@users.noreply.github.com>"]
+license = "MIT"
+repository = "https://github.com/tsiscoe/Praetor"
+
+[workspace.dependencies]
+anyhow = "1.0"
+thiserror = "2.0"
+clap = { version = "4.5", features = ["derive", "env"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Cryptography
+blake3 = "1.5"
+ed25519-dalek = { version = "2.1", features = ["rand_core", "zeroize"] }
+chacha20poly1305 = { version = "0.10", features = ["std"] }
+zeroize = { version = "1.8", features = ["derive"] }
+subtle = "2.6"
+rand = "0.8"
+hex = "0.4"
+base64 = "0.22"
+
+# Inspection & Storage
+aho-corasick = "1.1"
+regex = "1.11"
+rusqlite = { version = "0.42.0", features = ["bundled"] }
+
+# Async Runtime & TUI
+tokio = { version = "1.42", features = ["rt-multi-thread", "macros", "net", "process", "io-util", "io-std", "sync", "time", "signal"] }
+ratatui = "0.30"
+crossterm = "0.28"
+
+# Utilities
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.11", features = ["v4", "serde"] }
+dirs = "6.0"
+
+# Existing Fleet Bridges
+sextant_core = { package = "sextant", git = "https://github.com/tsiscoe/Sextant.git" }
+
+# Internal Workspace Crates
+praetor-core = { path = "crates/praetor-core" }
+praetor-win32-cage = { path = "crates/praetor-win32-cage" }
+tempfile = "3.14"
+proptest = "1.5"
+
+[profile.dev.package.blake3]
+opt-level = 3
+
+[profile.dev.package.ed25519-dalek]
+opt-level = 3
+
+[profile.dev.package.chacha20poly1305]
+opt-level = 3
+
+[profile.dev.package.argon2]
+opt-level = 3
+
+[profile.dev.package.x25519-dalek]
+opt-level = 3

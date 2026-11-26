@@ -1,0 +1,39 @@
+[package]
+name = "praetor-hook"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Praetor Hook: Sub-2ms Fail-Closed PreToolUse Firewall, PowerShell -EncodedCommand Decoder, and Untrusted Handoff Sanitizer"
+
+[[bin]]
+name = "praetor-hook"
+path = "src/main.rs"
+
+[lib]
+name = "praetor_hook"
+path = "src/lib.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "warn"
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+aho-corasick.workspace = true
+regex.workspace = true
+base64.workspace = true
+blake3.workspace = true
+hex.workspace = true
+praetor-core.workspace = true
+
+[dev-dependencies]
+tempfile = "3.14"
+proptest = "1.5"

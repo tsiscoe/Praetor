@@ -1,0 +1,38 @@
+[package]
+name = "praetor-gate"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Praetor Gate: Zero-Framework Pure-Rust Ed25519 LAN Reverse Proxy & CSRF/Wake Firewall for MeshBus (:8088) and AgentMesh (:8765)"
+
+[[bin]]
+name = "praetor-gate"
+path = "src/main.rs"
+
+[lib]
+name = "praetor_gate"
+path = "src/lib.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "warn"
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+blake3.workspace = true
+hex.workspace = true
+uuid.workspace = true
+sextant_core.workspace = true
+praetor-core.workspace = true
+
+[dev-dependencies]
+tempfile = "3.14"

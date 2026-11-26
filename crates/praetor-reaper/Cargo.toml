@@ -1,0 +1,42 @@
+[package]
+name = "praetor-reaper"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Praetor Reaper: Autonomous Counter-Agent Hunter, Loopback Canary Trap, Process-Tree Evictor, Persistence Rollback Engine & Ratatui v0.30 Cockpit"
+
+[[bin]]
+name = "praetor-reaper"
+path = "src/main.rs"
+
+[lib]
+name = "praetor_reaper"
+path = "src/lib.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+unwrap_used = "warn"
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+ratatui.workspace = true
+crossterm.workspace = true
+blake3.workspace = true
+hex.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+sextant_core.workspace = true
+praetor-core.workspace = true
+praetor-win32-cage.workspace = true
+
+[dev-dependencies]
+tempfile = "3.14"
